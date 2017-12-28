@@ -17,7 +17,7 @@ async function init() {
   let kasa = await Kasa.login(user, pass);
   console.log("token", await kasa.getToken());
   console.log("devices: ", await kasa.getDeviceList());
-  let lamp = await kasa.getHS100("Living Room Lamp");
+  let lamp = await kasa.getHS100(process.env.kasadevice);
   return lamp;
 }
 
