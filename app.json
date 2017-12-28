@@ -1,0 +1,10 @@
+{
+  "name": "control-my-switch",
+  "description": "Control your TP-Link HS100 outlet with a web app.",
+  "repository": "https://github.com/harrisonlingren/control-my-switch",
+  "env": {
+    "kasauser": "",
+    "kasapass": "",
+    "kasadevice": ""
+  }
+}
