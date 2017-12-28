@@ -1,5 +1,5 @@
 var switchInput = document.getElementById("switch");
-var APIurl = "http://localhost:5000";
+var APIurl = "https://control-my-lamp.herokuapp.com";
 
 function on() {
   return new Promise((resolve, reject) => {
