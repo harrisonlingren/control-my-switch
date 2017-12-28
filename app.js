@@ -65,7 +65,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // routes
 app.get("/", (req, res, next) => {
-  res.render("index", { state: false });
+  res.render("index", { state: true });
 });
 
 app.post("/on", async (req, res, next) => {
