@@ -17,14 +17,14 @@ async function init() {
   let kasa = await Kasa.login(user, pass);
   console.log("token", await kasa.getToken());
   console.log("devices: ", await kasa.getDeviceList());
-  let lamp = await kasa.getHS100(process.env.kasadevice);
-  return lamp;
+  let smartSwitch = await kasa.getHS100(process.env.kasadevice);
+  return smartSwitch;
 }
 
-async function on(lamp) {
+async function on(smartSwitch) {
   try {
-    let response = await lamp.powerOn();
-    console.log("lamp: ", response.relay_state);
+    let response = await smartSwitch.powerOn();
+    console.log("smartSwitch: ", response.relay_state);
     if (response.relay_state == 1) {
       return true;
     } else {
@@ -36,10 +36,10 @@ async function on(lamp) {
   }
 }
 
-async function off(lamp) {
+async function off(smartSwitch) {
   try {
-    let response = await lamp.powerOff();
-    console.log("lamp: ", response.relay_state);
+    let response = await smartSwitch.powerOff();
+    console.log("smartSwitch: ", response.relay_state);
     if (response.relay_state == 0) {
       return true;
     } else {
@@ -70,8 +70,8 @@ app.get("/", (req, res, next) => {
 
 app.post("/on", async (req, res, next) => {
   try {
-    let lamp = await init();
-    let result = await on(lamp);
+    let smartSwitch = await init();
+    let result = await on(smartSwitch);
     res.status(200).json({ result: result });
   } catch (err) {
     console.error(err);
@@ -81,8 +81,8 @@ app.post("/on", async (req, res, next) => {
 
 app.post("/off", async (req, res, next) => {
   try {
-    let lamp = await init();
-    let result = await off(lamp);
+    let smartSwitch = await init();
+    let result = await off(smartSwitch);
     res.status(200).json({ result: result });
   } catch (err) {
     console.error(err);
