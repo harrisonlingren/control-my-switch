@@ -1,9 +1,9 @@
 var switchInput = document.getElementById("switch");
-var APIurl = "https://control-my-lamp.herokuapp.com";
+var APIurl = window.location.href;
 
 function on() {
   return new Promise((resolve, reject) => {
-    fetch(APIurl + "/on", {
+    fetch(APIurl + "on", {
       method: "post"
     })
       .then(res => {
@@ -18,7 +18,7 @@ function on() {
 
 function off() {
   return new Promise((resolve, reject) => {
-    fetch(APIurl + "/off", {
+    fetch(APIurl + "off", {
       method: "post"
     })
       .then(res => {
